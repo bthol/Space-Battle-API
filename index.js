@@ -5,7 +5,7 @@ const port = 3000;
 
 //Landing route
 server.get(`/`, (req, res) => {
-    res.send("Landing route accessed.")
+    res.send("Landing route accessed. use /scoreboard for ")
 })
 
 //Database Error Handling
