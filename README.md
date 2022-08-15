@@ -10,3 +10,4 @@ Technologies:
 
 NPM packages:
 -dotenv
+-nodemon
