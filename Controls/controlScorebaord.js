@@ -7,14 +7,28 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 //Models
-const modelScoreboard = require("../Models/modelScoreboard");
+const scoreboard = require("../Models/modelScoreboard");
 
 //Database (MongoDB Atlas)
 const URI = process.env.MONGO_URI
 mongoose.connect(URI)
 
-router.get(`/`, (req, res) => {
-    res.send("Control route accessed.")
+//Root route
+router.get(`/`, async (req, res) => {
+    // res.send("Scoreboard root route accessed.")
+    try {
+        const data = await scoreboard.find();
+        res.send({
+            data: data
+        })
+    } catch (err) {
+        res.send({
+            error: err
+        })
+    }
 })
+
+
+
 
 module.exports = router;
