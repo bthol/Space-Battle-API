@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 //Middleware
 server.use(bodyParser.urlencoded({ extended: true }));
+server.use(express.json());
 
 //Landing route
 server.get(`/`, (req, res) => {

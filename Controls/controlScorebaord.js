@@ -30,8 +30,13 @@ router.get(`/`, async (req, res) => {
 
 //Read route
 router.get(`/:id`, async (req, res) => {
+    // res.send("read route accessed.")
     try {
-        res.send("read route accessed.")
+        const datum = await scoreboard.findById(req.params.id)
+        if (!datum) {throw new Error("No datum by that ID")}
+        res.send({
+            datum: datum
+        })
     } catch (err) {
         res.send({
             error: err
@@ -56,8 +61,12 @@ router.post(`/`, async (req, res) => {
 
 //Update route
 router.patch(`/:id`, async (req, res) => {
+    // res.send("update route accessed.")
     try {
-        res.send("update route accessed.")
+        const datum = await scoreboard.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.send({
+            datum: datum
+        })
     } catch (err) {
         res.send({
             error: err
@@ -67,8 +76,12 @@ router.patch(`/:id`, async (req, res) => {
 
 //Delete route
 router.delete(`/:id`, async (req, res) => {
+    // res.send("delete route accessed.")
     try {
-        res.send("delete route accessed.")
+        const datum = await scoreboard.findByIdAndDelete(req.params.id);
+        res.send({
+            deleted: datum
+        })
     } catch (err) {
         res.send({
             error: err
