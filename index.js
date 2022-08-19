@@ -11,7 +11,8 @@ server.use(express.json());
 
 //Landing route
 server.get(`/`, (req, res) => {
-    res.send("Landing route accessed. /scoreboard for top 10 scores and their names")
+    // res.send("Landing route accessed. /scoreboard for top 10 scores and player names")
+    res.redirect(`/scoreboard`)
 })
 
 //Controller Indices
