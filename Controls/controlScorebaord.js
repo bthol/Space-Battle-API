@@ -11,7 +11,7 @@ const scoreboard = require("../Models/modelScoreboard");
 
 //Database (MongoDB Atlas)
 const URI = process.env.MONGO_URI
-mongoose.connect(URI)
+mongoose.connect(URI);
 
 //Root route
 router.get(`/`, async (req, res) => {
@@ -28,12 +28,27 @@ router.get(`/`, async (req, res) => {
     }
 })
 
-//Read route
-router.get(`/:id`, async (req, res) => {
+//Read route 1
+router.get(`/id/:id`, async (req, res) => {
     // res.send("read route accessed.")
     try {
         const datum = await scoreboard.findById(req.params.id)
         if (!datum) {throw new Error("No datum by that ID")}
+        res.send({
+            datum: datum
+        })
+    } catch (err) {
+        res.send({
+            error: err
+        })
+    }
+})
+
+//Read route 2
+router.get(`/listIndex/:id`, async (req, res) => {
+    // res.send("read route accessed.")
+    try {
+        const datum = await scoreboard.findOne({"listIndex": `${req.params.id}`});
         res.send({
             datum: datum
         })

@@ -11,6 +11,11 @@ const schema = new Schema ({
         type: Number,
         required: true
     },
+    listIndex: {
+        type: Number,
+        unique: true,
+        required: true
+    }
 }, {timestamps: false});
 
 const modelScoreboard = mongoose.model('modelScoreboard', schema);
