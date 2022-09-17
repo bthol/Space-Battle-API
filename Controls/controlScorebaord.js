@@ -74,11 +74,26 @@ router.post(`/`, async (req, res) => {
     }
 })
 
-//Update route
-router.patch(`/:id`, async (req, res) => {
+//Update route 1
+router.patch(`/id/:id`, async (req, res) => {
     // res.send("update route accessed.")
     try {
         const datum = await scoreboard.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.send({
+            datum: datum
+        })
+    } catch (err) {
+        res.send({
+            error: err
+        })
+    }
+})
+
+//Update route 2
+router.patch(`/listIndex/:id`, async (req, res) => {
+    // res.send("update route accessed.")
+    try {
+        const datum = await scoreboard.findOneAndUpdate({"listIndex": `${req.params.id}`}, req.body, {new: true})
         res.send({
             datum: datum
         })
