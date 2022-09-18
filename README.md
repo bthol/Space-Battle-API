@@ -11,4 +11,5 @@ Technologies:
 NPM packages:
 -dotenv
 -nodemon
+-ejs
 -cors
