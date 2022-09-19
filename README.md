@@ -6,6 +6,7 @@ Description: This is the server-side of the Space Battle game web application. I
 Technologies:
 -Node.js
 -Express.js
+-MongoDB
 -Mongoose ODM
 
 NPM packages:
