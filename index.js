@@ -10,6 +10,7 @@ require("dotenv").config();
 const port = process.env.PORT;
 
 //Middleware
+server.set('view engine', 'ejs');
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.json());
 
