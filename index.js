@@ -1,10 +1,13 @@
 //Dependencies
 const express = require('Express');
 const server = express();
-const port = 3000;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+
+//Configuration
+require("dotenv").config();
+const port = process.env.PORT;
 
 //Middleware
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -13,8 +16,7 @@ server.use(cors());
 
 //Landing route
 server.get(`/`, (req, res, next) => {
-    // res.send("Landing route accessed. /scoreboard for top 10 scores and player names")
-    res.redirect(`/scoreboard`)
+    res.redirect(`/scoreboard`);
 })
 
 //Controller Indices

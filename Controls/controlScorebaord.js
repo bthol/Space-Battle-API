@@ -2,19 +2,23 @@
 const express = require("express");
 const router = express();
 const mongoose = require("mongoose");
+const cors = require('cors');
 
 //Configuration
 require("dotenv").config();
 
-//Models
-const scoreboard = require("../Models/modelScoreboard");
+// Middleware
+router.use(cors());
 
 //Database (MongoDB Atlas)
 const URI = process.env.MONGO_URI
 mongoose.connect(URI);
 
+//Models
+const scoreboard = require("../Models/modelScoreboard");
+
 //Root route
-router.get(`/`, async (req, res) => {
+router.get(`/`, async (req, res, next) => {
     // res.send("Scoreboard root route accessed.")
     try {
         const data = await scoreboard.find();
