@@ -1,12 +1,12 @@
 # Space-Battle-API
 Developer: Blake Thollaug
 
-Description: This is the server-side of the Space Battle game web application. It uses MongoDB Atlas and Mongoose ODM to manage player name and score data for display on the Space Battle client-side.
+Description: This is an REST API for the server-side of the Space Battle web application. It manages player name and score data for display on the Space Battle client-side.
 
 Technologies:
 -Node.js
 -Express.js
--MongoDB
+-MongoDB Atlas
 -Mongoose ODM
 
 NPM packages:

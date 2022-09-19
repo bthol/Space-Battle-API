@@ -12,10 +12,9 @@ const port = process.env.PORT;
 //Middleware
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.json());
-server.use(cors());
 
 //Landing route
-server.get(`/`, (req, res, next) => {
+server.get(`/`, cors(), (req, res, next) => {
     res.redirect(`/scoreboard`);
 })
 

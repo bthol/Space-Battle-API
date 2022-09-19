@@ -7,9 +7,6 @@ const cors = require('cors');
 //Configuration
 require("dotenv").config();
 
-// Middleware
-router.use(cors());
-
 //Database (MongoDB Atlas)
 const URI = process.env.MONGO_URI
 mongoose.connect(URI);
@@ -18,7 +15,7 @@ mongoose.connect(URI);
 const scoreboard = require("../Models/modelScoreboard");
 
 //Root route
-router.get(`/`, async (req, res, next) => {
+router.get(`/`, cors(),  async (req, res, next) => {
     // res.send("Scoreboard root route accessed.")
     try {
         const data = await scoreboard.find();
@@ -45,7 +42,7 @@ router.get(`/id/:id`, async (req, res) => {
 })
 
 //Read route 2
-router.get(`/listIndex/:id`, async (req, res) => {
+router.get(`/listIndex/:id`, cors(), async (req, res, next) => {
     // res.send("read route accessed.")
     try {
         const datum = await scoreboard.findOne({"listIndex": `${req.params.id}`});
@@ -88,7 +85,7 @@ router.patch(`/id/:id`, async (req, res) => {
 })
 
 //Update route 2
-router.patch(`/listIndex/:id`, async (req, res) => {
+router.patch(`/listIndex/:id`, cors(), async (req, res, next) => {
     // res.send("update route accessed.")
     try {
         const datum = await scoreboard.findOneAndUpdate({"listIndex": `${req.params.id}`}, req.body, {new: true})
