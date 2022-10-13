@@ -7,9 +7,7 @@ const cors = require('cors');
 
 //Configuration
 require("dotenv").config();
-
-//Environment variables
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 //Middleware
 server.set('view engine', 'ejs');
