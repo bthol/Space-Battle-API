@@ -7,12 +7,15 @@ const cors = require('cors');
 
 //Configuration
 require("dotenv").config();
+
+//Environment variables
 const port = process.env.PORT;
 
 //Middleware
 server.set('view engine', 'ejs');
-server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.urlencoded({ extended: false }));
 server.use(express.json());
+server.use(cors());
 
 //Landing route
 server.get(`/`, cors(), (req, res, next) => {
