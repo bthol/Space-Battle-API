@@ -1,7 +1,7 @@
 {
   "name": "space-battle-api",
   "version": "1.0.0",
-  "description": "This is the Space Battle API for the scoreboard feature",
+  "description": "This is the API for the scoreboard feature of the Spae Battle game",
   "main": "index.js",
   "engines": {
     "node": "14.7.0"
@@ -26,6 +26,6 @@
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "mongoose": "^6.5.2",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.21"
   }
 }
