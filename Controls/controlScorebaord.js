@@ -49,7 +49,10 @@ router.get(`/listIndex/:id`, async (req, res, next) => {
     // res.send("read route accessed.")
     try {
         const datum = await scoreboard.findOne({"listIndex": `${req.params.id}`});
-        res.render('../Views/datum.ejs', {datum: datum})
+        res.send({
+            datum: datum
+        })
+        // res.render('../Views/datum.ejs', {datum: datum})
     } catch (err) {
         res.send({
             error: err
