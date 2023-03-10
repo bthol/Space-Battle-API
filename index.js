@@ -1,9 +1,9 @@
 //Dependencies
-import express, { json } from 'express.js';
+const express = require('express');
 const server = express();
-import { connection } from 'mongoose';
-import { urlencoded } from 'body-parser';
-import cors from 'cors';
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 //Configuration
 require("dotenv").config();
@@ -11,8 +11,8 @@ const port = process.env.PORT || 3000;
 
 //Middleware
 server.set('view engine', 'ejs');
-server.use(urlencoded({ extended: false }));
-server.use(json());
+server.use(bodyParser.urlencoded({ extended: false }));
+server.use(express.json());
 server.use(cors());
 
 //Landing route
@@ -21,12 +21,12 @@ server.get(`/`, cors(), (req, res, next) => {
 })
 
 //Controller Indices
-import scoreboard from './Controls/controlScorebaord';
+const scoreboard = require('./Controls/controlScorebaord');
 server.use(`/scoreboard`, scoreboard);
 
 //Database Error Handling
-connection.on(`error`, (error) => console.error(error));
-connection.once(`open`, () => console.log("MongoDB connected"));
+mongoose.connection.on(`error`, (error) => console.error(error));
+mongoose.connection.once(`open`, () => console.log("MongoDB connected"));
 
 //Listener
 server.listen(port, () => {
