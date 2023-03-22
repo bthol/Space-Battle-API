@@ -22,7 +22,10 @@ router.get(`/`,  async (req, res, next) => {
     // res.send("Scoreboard root route accessed.")
     try {
         const data = await scoreboard.find();
-        res.render('../Views/dataList.ejs', {data: data})
+        // res.render('../Views/dataList.ejs', {data: data})
+        res.send({
+            data: data
+        })
     } catch (err) {
         res.send({
             error: err
@@ -49,10 +52,10 @@ router.get(`/listIndex/:id`, async (req, res, next) => {
     // res.send("read route accessed.")
     try {
         const datum = await scoreboard.findOne({"listIndex": `${req.params.id}`});
-        res.send({
-            datum: datum
-        })
-        // res.render('../Views/datum.ejs', {datum: datum})
+        // res.send({
+        //     datum: datum
+        // })
+        res.render('../Views/datum.ejs', {datum: datum})
     } catch (err) {
         res.send({
             error: err
