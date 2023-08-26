@@ -48,7 +48,7 @@ router.get(`/id::id`, async (req, res) => {
 })
 
 //Read route 2
-router.get(`/list/:id`, async (req, res, next) => {
+router.get(`/rank::id`, async (req, res, next) => {
     // res.send("read route accessed.")
     try {
         const datum = await scoreboard.findOne({"list": `${req.params.id}`});
@@ -94,7 +94,7 @@ router.patch(`/id::id`, async (req, res) => {
 })
 
 //Update route 2
-router.patch(`/list/:id`, async (req, res, next) => {
+router.patch(`/rank::id`, async (req, res, next) => {
     // res.send("update route accessed.")
     try {
         const datum = await scoreboard.findOneAndUpdate({"list": `${req.params.id}`}, req.body, {new: true})
