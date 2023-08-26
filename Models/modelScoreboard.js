@@ -4,20 +4,18 @@ const Schema = mongoose.Schema;
 const schema = new Schema ({
     userName: {
         type: String,
-        unique: true,
         required: true
     },
     userScore: {
         type: Number,
         required: true
     },
-    listIndex: {
+    userRank: {
         type: Number,
-        unique: true,
         required: true
-    }
+    },
 }, {timestamps: false});
 
-const modelScoreboard = mongoose.model('modelScoreboard', schema);
+const scoreboard = mongoose.model('scoreboard', schema);
 
-module.exports = modelScoreboard;
+module.exports = scoreboard;

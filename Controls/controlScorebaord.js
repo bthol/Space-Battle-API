@@ -34,7 +34,7 @@ router.get(`/`,  async (req, res, next) => {
 })
 
 //Read route 1
-router.get(`/id/:id`, async (req, res) => {
+router.get(`/id::id`, async (req, res) => {
     // res.send("read route accessed.")
     try {
         const datum = await scoreboard.findById(req.params.id)
@@ -51,7 +51,7 @@ router.get(`/id/:id`, async (req, res) => {
 router.get(`/list/:id`, async (req, res, next) => {
     // res.send("read route accessed.")
     try {
-        const datum = await scoreboard.findOne({"listIndex": `${req.params.id}`});
+        const datum = await scoreboard.findOne({"list": `${req.params.id}`});
         // res.send({
         //     datum: datum
         // })
@@ -79,7 +79,7 @@ router.post(`/`, async (req, res) => {
 })
 
 //Update route 1
-router.patch(`/id/:id`, async (req, res) => {
+router.patch(`/id::id`, async (req, res) => {
     // res.send("update route accessed.")
     try {
         const datum = await scoreboard.findByIdAndUpdate(req.params.id, req.body, {new: true})
@@ -97,7 +97,7 @@ router.patch(`/id/:id`, async (req, res) => {
 router.patch(`/list/:id`, async (req, res, next) => {
     // res.send("update route accessed.")
     try {
-        const datum = await scoreboard.findOneAndUpdate({"listIndex": `${req.params.id}`}, req.body, {new: true})
+        const datum = await scoreboard.findOneAndUpdate({"list": `${req.params.id}`}, req.body, {new: true})
         res.send({
             datum: datum
         })
@@ -109,7 +109,7 @@ router.patch(`/list/:id`, async (req, res, next) => {
 })
 
 //Delete route
-router.delete(`/:id`, async (req, res) => {
+router.delete(`/id::id`, async (req, res) => {
     // res.send("delete route accessed.")
     try {
         const datum = await scoreboard.findByIdAndDelete(req.params.id);
