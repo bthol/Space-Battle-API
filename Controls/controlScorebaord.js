@@ -51,11 +51,15 @@ router.get(`/id::id`, async (req, res) => {
 router.get(`/rank::id`, async (req, res, next) => {
     // res.send("read route accessed.")
     try {
-        const datum = await scoreboard.findOne({"list": `${req.params.id}`});
+        const datum = await scoreboard.findOne({"userRank": `${req.params.id}`});
+        if (!datum) {throw new Error("No datum by that rank")}
         // res.send({
         //     datum: datum
         // })
-        res.render('../Views/datum.ejs', {datum: datum})
+        // res.render('../Views/datum.ejs', {datum: datum})
+        res.send({
+            datum: datum
+        })
     } catch (err) {
         res.send({
             error: err
