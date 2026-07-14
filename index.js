@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 //Configuration
+// require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]); // force node to use mongoDB DNS
 require("dotenv").config()
 const port = process.env.PORT || 3000
 
@@ -22,11 +23,11 @@ server.get(`/`, cors(), (req, res, next) => {
 })
 
 //Controller Indices
-const scoreboard = require('./Controls/controlScorebaord');
+const scoreboard = require('./Controls/controlScorebaord')
 server.use(`/scoreboard`, scoreboard)
 
 //Database Error Handling
-mongoose.connection.on(`error`, (error) => console.error(error));
+mongoose.connection.on(`error`, (error) => console.error(error))
 mongoose.connection.once(`open`, () => console.log("MongoDB connected"))
 
 //Listener

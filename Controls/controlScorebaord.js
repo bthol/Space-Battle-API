@@ -69,17 +69,17 @@ router.get(`/rank::id`, async (req, res, next) => {
 
 //Create route
 router.post(`/`, async (req, res) => {
-    // res.send("create route accessed.")
-    try {
-        const entry = await scoreboard.create(req.body);
-        res.send({
-            entry: entry
-        })
-    } catch (err) {
-        res.send({
-            error: err
-        })
-    }
+    res.send("create route accessed.")
+    // try {
+    //     const entry = await scoreboard.create(req.body);
+    //     res.send({
+    //         entry: entry
+    //     })
+    // } catch (err) {
+    //     res.send({
+    //         error: err
+    //     })
+    // }
 })
 
 //Update route 1
